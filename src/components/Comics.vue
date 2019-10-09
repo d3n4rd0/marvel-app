@@ -1,24 +1,33 @@
 <template>
   <div class="comics-page">
     <h1 class="title">Comics</h1>
-    <div class="comics">
+    <SearchInput @trigger-search="fetchComics" title="Find your comic"/>
+    <div v-if="this.loading">
+      <Loader />
+    </div>
+    <div v-else class="comics">
       <div v-for="comic, index in comics" :key="comic.id" class="item">
-        <div class="" @click="openComic(comic)">
-          <div class="comic-title">{{comic.title}}</div>
-          <img :src="thumbUrl(comic)" />
-          </div>
+        <ImageTile :key="index" :data="comic" type="comic" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ImageTile from "./ImageTile"
+import Loader from "./Loader"
+import SearchInput from './SearchInput'
 export default {
   name: "Comics",
+  components: {
+    ImageTile,
+    Loader,
+    SearchInput
+  },
   data() {
     return {
       loading: false,
-      comics: []
+      comics: [],
     };
   },
   methods: {
@@ -31,34 +40,37 @@ export default {
         );
       }
     },
-    getComics(limit, offset) {
+    getComics(searchValue) {
       this.loading = true;
       let url =
         "http://gateway.marvel.com/v1/public/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73";
-      if (limit) {
-        url += "&limit=" + limit;
-      }
-      if (offset) {
-        url += "&offset=" + offset;
+      if(searchValue) {
+        url += "&titleStartsWith=" + searchValue;
       }
       fetch(url)
         .then(response => {
           response.json().then(res => {
             console.log(res);
             this.comics = res.data.results;
-            this.loading = false;
+            this.loading = false
           });
         })
         .catch(() => {
           this.loading = false;
         });
     },
-    openComic(comic){
-      this.$router.push('/comic/'+comic.id)
+    openComic(comic) {
+      this.$router.push("/comic/" + comic.id);
+    },
+    fetchComics(searchValue){
+      console.log('search value', searchValue);
+      this.getComics(searchValue);
     }
   },
   mounted() {
-    this.getComics();
+    if (!this.comics.length) {
+      this.getComics();
+    }
   }
 };
 </script>
@@ -69,33 +81,18 @@ export default {
     margin: auto;
     height: 52px;
     line-height: 52px;
-    margin-left: 130px
+    color: white;
   }
   .comics {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    background: rgba(114, 186, 94, 0.05);
     margin-left: 130px;
     justify-items: center;
     align-items: center;
     justify-content: space-evenly;
-    .item {
-      height: 500px;
-      width: 300px;
-      cursor: pointer;
-      opacity: 0.7;
-      .comic-title {
-        background-color: #ec1d24;
-        color:white;
-        width: 300px;
-        height: 40px;
-        
-      }
-      &:hover {
-        opacity: 1;
-      }
-    }
+    padding: 40px 100px 0px 100px;
+    height: 100%;
   }
   @media (max-width: 1390px) {
     .comics {
@@ -112,7 +109,11 @@ export default {
       grid-template-columns: 1fr;
     }
   }
-
+  @media (max-width: 450px) {
+    .comics {
+      margin-left: 0px;
+    }
+  }
 }
 
 </style>

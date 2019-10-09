@@ -70,4 +70,13 @@ export default {
     white-space: nowrap;
   }
 }
+@media (max-width: 450px) {
+  .sidebar {
+    width: 100%;
+    height: 55px;
+  }
+  .bar-item {
+    float: right;
+  }
+}
 </style>
