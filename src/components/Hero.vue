@@ -43,68 +43,64 @@
 import ImageTile from './ImageTile'
 import Loader from './Loader'
 export default {
-  name: "Hero",
-  props: ["id"],
-  data() {
+  name: 'Hero',
+  props: ['id'],
+  data () {
     return {
       loading: false,
       loadingComics: false,
       heroData: {},
       heroComics:[]
-    };
+    }
   },
   components: {
     ImageTile,
     Loader
   },
   methods: {
-    thumbUrl(filename, type) {
+    thumbUrl (filename, type) {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
-          "/" +
+          '/' +
           type +
-          "." +
+          '.' +
           filename.thumbnail.extension
-        );
+        )
       }
     },
     getHero() {
-      this.loading = true;
-      let url =
-        "http://gateway.marvel.com/v1/public/characters/"+this.id+"?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73"
+      this.loading = true
+      let url = 'http://gateway.marvel.com/v1/public/characters/'+this.id+'?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
       fetch(url)
         .then(response => {
           response.json().then(res => {
-            console.log(res);
-            this.heroData = res.data.results[0];
-            this.loading = false;
+            this.heroData = res.data.results[0]
+            this.loading = false
           });
         })
         .catch(() => {
-          this.loading = false;
+          this.loading = false
         });
     },
     getComics() {
-      this.loadingComics = true;
-      let url =
-        "http://gateway.marvel.com/v1/public/characters/"+this.id+"/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73";
+      this.loadingComics = true
+      let url = 'http://gateway.marvel.com/v1/public/characters/'+this.id+'/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
       fetch(url)
         .then(response => {
           response.json().then(res => {
-            console.log(res);
-            this.heroComics = res.data.results;
-            this.loadingComics = false;
-          });
+            this.heroComics = res.data.results
+            this.loadingComics = false
+          })
         })
         .catch(() => {
-          this.loadingComics = false;
+          this.loadingComics = false
         });
     },
   },
   mounted() {
-    this.getHero();
-    this.getComics();
+    this.getHero()
+    this.getComics()
   }
 };
 </script>
@@ -143,6 +139,7 @@ export default {
     padding: 0 30px;
     margin: 0 auto;
     position: absolute;
+    margin-left: 150px;
     top: 0;
     left: 0;
     right: 0;
@@ -171,7 +168,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    margin-left: 130px;
+    margin-left: 150px;
     justify-items: center;
     align-items: center;
     justify-content: space-evenly;

@@ -43,7 +43,7 @@ export default {
         .then(response => {
           response.json().then(res => {
             console.log(res);
-            this.heroes = res.data.results
+            this.heroes = res.data ? res.data.results : []
             this.loading = false
           });
         })

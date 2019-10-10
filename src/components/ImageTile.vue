@@ -9,10 +9,10 @@
 
 <script>
 export default {
-  name: "ImageTile",
-  props: ["data", "type"],
-  data() {
-    return {};
+  name: 'ImageTile',
+  props: ['data', 'type'],
+  data () {
+    return {}
   },
   methods: {
     thumbUrl(filename) {
@@ -21,14 +21,14 @@ export default {
           filename.thumbnail.path +
           "/portrait_uncanny." +
           filename.thumbnail.extension
-        );
+        )
       }
     },
     openItem(comic) {
         if(this.type === 'comic') {
-            this.$router.push("/comic/" + this.data.id);
+            this.$router.push("/comic/" + this.data.id)
         } else {
-            this.$router.push("/hero/" + this.data.id);
+            this.$router.push("/hero/" + this.data.id)
         }
     }
   }

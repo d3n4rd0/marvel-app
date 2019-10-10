@@ -37,5 +37,6 @@ export default new Router({
       name: 'Comics',
       component: Comics
     }
-  ]
+  ],
+  mode: 'history'
 })

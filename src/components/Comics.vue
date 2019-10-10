@@ -14,24 +14,24 @@
 </template>
 
 <script>
-import ImageTile from "./ImageTile"
-import Loader from "./Loader"
+import ImageTile from './ImageTile'
+import Loader from './Loader'
 import SearchInput from './SearchInput'
 export default {
-  name: "Comics",
+  name: 'Comics',
   components: {
     ImageTile,
     Loader,
     SearchInput
   },
-  data() {
+  data () {
     return {
       loading: false,
       comics: [],
     };
   },
   methods: {
-    thumbUrl(filename) {
+    thumbUrl (filename) {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
@@ -42,16 +42,15 @@ export default {
     },
     getComics(searchValue) {
       this.loading = true;
-      let url =
-        "http://gateway.marvel.com/v1/public/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73";
+      let url = 'http://gateway.marvel.com/v1/public/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
       if(searchValue) {
-        url += "&titleStartsWith=" + searchValue;
+        url += "&titleStartsWith=" + searchValue
       }
       fetch(url)
         .then(response => {
           response.json().then(res => {
             console.log(res);
-            this.comics = res.data.results;
+            this.comics = res.data.results
             this.loading = false
           });
         })
@@ -60,16 +59,15 @@ export default {
         });
     },
     openComic(comic) {
-      this.$router.push("/comic/" + comic.id);
+      this.$router.push("/comic/" + comic.id)
     },
     fetchComics(searchValue){
-      console.log('search value', searchValue);
-      this.getComics(searchValue);
+      this.getComics(searchValue)
     }
   },
   mounted() {
     if (!this.comics.length) {
-      this.getComics();
+      this.getComics()
     }
   }
 };
@@ -107,6 +105,15 @@ export default {
   @media (max-width: 790px) {
     .comics {
       grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 650px) {
+    .title {
+      margin-top:70px;
+      transition: 0.5s;
+    }
+    .comics {
+      margin-left: 0px;
     }
   }
   @media (max-width: 450px) {

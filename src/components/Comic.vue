@@ -43,14 +43,14 @@
 import ImageTile from './ImageTile'
 import Loader from './Loader'
 export default {
-  name: "Comic",
-  props: ["id"],
-  data() {
+  name: 'Comic',
+  props: ['id'],
+  data () {
     return {
       loading: false,
       loadingCharacters: false,
       comicData: {},
-      comicCharacters:[]
+      comicCharacters: []
     };
   },
   components: {
@@ -62,48 +62,43 @@ export default {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
-          "/" +
+          '/' +
           type +
-          "." +
+          '.' +
           filename.thumbnail.extension
         );
       }
     },
     getComic() {
       this.loading = true;
-      let url =
-        "http://gateway.marvel.com/v1/public/comics/"+this.id+"?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73"
+      let url = 'http://gateway.marvel.com/v1/public/comics/'+this.id+'?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
       fetch(url)
         .then(response => {
           response.json().then(res => {
-            console.log(res);
-            this.comicData = res.data.results[0];
-            this.loading = false;
+            this.comicData = res.data.results[0]
+            this.loading = false
           });
         })
         .catch(() => {
-          this.loading = false;
+          this.loading = false
         });
     },
     getCharacters() {
-      this.loadingCharacters = true;
-      let url =
-        "http://gateway.marvel.com/v1/public/comics/"+this.id+"/characters?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73";
+      this.loadingCharacters = true
+      let url = 'http://gateway.marvel.com/v1/public/comics/'+this.id+'/characters?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
       fetch(url)
         .then(response => {
           response.json().then(res => {
-            console.log(res);
-            this.comicCharacters = res.data.results;
-            console.log('comicCharacters', this.comicCharacters)
-            this.loadingCharacters = false;
+            this.comicCharacters = res.data.results
+            this.loadingCharacters = false
           });
         })
         .catch(() => {
-          this.loadingCharacters = false;
+          this.loadingCharacters = false
         });
     },
     openComic(comic) {
-      this.$router.push("/comic/" + comic.id);
+      this.$router.push("/comic/" + comic.id)
     }
   },
   mounted() {
@@ -145,6 +140,7 @@ export default {
     width: 100%;
     max-width: 1240px;
     padding: 0 30px;
+    margin-left: 150px;
     margin: 0 auto;
     position: absolute;
     top: 0;
@@ -175,7 +171,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    margin-left: 130px;
+    margin-left: 150px;
     justify-items: center;
     align-items: center;
     justify-content: space-evenly;

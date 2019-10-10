@@ -18,19 +18,19 @@
 
 <script>
 export default {
-  name: "SearchInput",
-  props:["title"],
-  data() {
+  name: 'SearchInput',
+  props: ['title'],
+  data () {
     return {
         search: ''
-    };
+    }
   },
   methods: {
-    fetchComics() {
-      this.$emit('trigger-search', this.search);
+    fetchComics () {
+      this.$emit('trigger-search', this.search)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -62,7 +62,7 @@ input, button
     background-color: #ec1d24;
     border-radius: 20px;
     box-shadow: 0 10px 40px #97e2dd, 0 0 0 7px #00fffeeb;
-    transform: scale(0.6);
+    transform: scale(0.5);
 }
 
 .search-wrapper
