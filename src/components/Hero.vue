@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="grid-container _forceRgtMar">
-      <h1 class="module-header small">{{heroData.name}}</h1>
+      <h1 class="title">{{heroData.name}}</h1>
       <div class="featured-item-info-wrap">
         <div class="featured-item-info">
           <div class="row-item comic-item">
@@ -21,7 +21,7 @@
           <div class="featured-item-text">
             <h1 class="module-header large">{{heroData.name}}</h1>
             <div class="featured-item-desc">
-              {{heroData.description.length ? heroData.description.length : 'No description for this character'}}
+              {{heroData.description ? heroData.description : 'No description for this character'}}
             </div>
           </div>
         </div>
@@ -106,74 +106,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hero-page {
-  .detail-item-bg-wrap {
-    display: block;
-    .detail-item-bg {
-      max-width: 100%;
-      margin: 0 auto;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      min-height: 100%;
-      overflow: hidden;
-      filter: opacity(0.4);
-      img {
-        width: 110% !important;
-        filter: blur(1rem);
-        height: auto !important;
-        background-color: transparent !important;
-      }
-    }
-    .featured-item-info {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-  .grid-container {
-    width: 100%;
-    max-width: 1240px;
-    padding: 0 30px;
-    margin: 0 auto;
-    position: absolute;
-    margin-left: 150px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    .featured-item-info-wrap {
-      padding: 50px 0;
-      justify-content: initial;
-      .featured-item-info {
-        display: flex;
-        flex-wrap: wrap;
-        .row-item {
-          flex: 1;
-          width: auto;
-          max-width: 100%;
-          .row-item-image {
-            max-width: 350px;
-          }
-        }
-      }
-      .featured-item-text {
-        flex: 2;
-      }
-    }
-  }
-  .comics {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    margin-left: 150px;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 40px 100px 0px 100px;
-    height: 100%;
-  }
-}
+
 </style>

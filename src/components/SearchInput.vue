@@ -63,6 +63,7 @@ input, button
     border-radius: 20px;
     box-shadow: 0 10px 40px #97e2dd, 0 0 0 7px #00fffeeb;
     transform: scale(0.5);
+    margin-left: 130px;
 }
 
 .search-wrapper
@@ -182,5 +183,11 @@ button span:before, button span:after
     right: -6px;
     width: 40px;
     background-color: #00fffe;
+}
+@media (max-width: 650px) {
+  #cover {
+    margin-left: 0px;
+    transition: 0.2s;
+  }
 }
 </style>

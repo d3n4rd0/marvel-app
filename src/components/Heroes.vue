@@ -65,44 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.heroes-page {
-  .title {
-    margin: auto;
-    height: 52px;
-    line-height: 52px;
-    color: white;
-  }
-  .heroes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    margin-left: 130px;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 40px 100px 0px 100px;
-    height: 100%
-  }
-  @media (max-width: 1390px) {
-    .heroes {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  @media (max-width: 1090px) {
-    .heroes {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: 790px) {
-    .heroes {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (max-width: 450px) {
-    .heroes {
-      margin-left: 0px;
-    }
-  }
 
-}
 </style>

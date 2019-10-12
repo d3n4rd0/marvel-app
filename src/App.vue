@@ -7,6 +7,7 @@
 
 <script>
 import Navigation from './components/Navigation'
+import style from './assets/style.scss'
 export default {
   name: 'App',
   components: {
@@ -23,6 +24,7 @@ export default {
   text-align: center;
 }
 body {
-  background-color: #101922
+  background-color: #7d0f13;
+
 }
 </style>

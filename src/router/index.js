@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Hero from '@/components/Hero'
 import Heroes from '@/components/Heroes'
 import Comic from '@/components/Comic'
@@ -12,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Heroes',
+      component: Heroes
     },
     {
       path: '/hero/:id',

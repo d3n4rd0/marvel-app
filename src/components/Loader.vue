@@ -31,8 +31,6 @@ export default {
     font-size: 45px;
     color: #97e2dd;
     text-align: center;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
   }
 

@@ -16,12 +16,7 @@
         </svg>
       </div>
       <ul>
-      <li class="bar-item" :class="{ active: activeRoute == '/'}" @click="changeRoute('/')">
-        <router-link to="/" class="navigation-button">
-          <span>Home</span>
-        </router-link>
-      </li>
-      <li class="bar-item" :class="{ active: activeRoute == '/heroes'}" @click="changeRoute('/heroes')">
+      <li class="bar-item" :class="{ active: (activeRoute == '/heroes' || activeRoute == '/')}" @click="changeRoute('/heroes')">
         <router-link to="/heroes" class="navigation-button">
           <span>Heroes</span>  
         </router-link>
@@ -64,15 +59,20 @@ a {
   .sidebar {
     height: 50%;
     position: fixed;
-    top: 80px;
+    top: 98px;
+    left: 50px;
     z-index: 1;
     overflow: auto;
     font-size: 12px;
     width: 150px;
     background: #ec1d24;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px #00fffe;
+    box-shadow: 0 0px 40px #97e2dd, 0 0 0 3px #00fffeeb;
     transition: 0.2s;
+    min-height: 350px;
+    .logo {
+      margin-top:20px;
+    }
     ul {
       margin: 0;
       padding: 0;
@@ -175,13 +175,14 @@ a {
     min-width:350px;
   }
   .sidebar {
-    width: 90%;
+    width: 100%;
     height: 60px;
+    position: fixed;
+    z-index: 1;
     top:0;
     line-height: 60px;
     text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0px;
     transition: 0.2s;
     background: #ec1d24;
     box-shadow: 0px 0px 10px 0px #00fffe;
@@ -189,6 +190,7 @@ a {
       margin: 0;
       li {
         list-style-type: none;
+        font-size: 16px;
         &:hover span{
           color:#00fffe;
           background-color: none;
@@ -197,20 +199,30 @@ a {
           text-decoration: none
         } 
         &:hover a{
-          background:none;
-          color:#00fffe
+          color: #00fffe;
+            font-size: 26px;
+            text-align: center;
+            transition: 0.5s;
         }  
-        &:hover a::before{
-          background:#b33a2b;
-        } 
-        &:hover a::after{
-          background:#e66a5a;
+        &.active {
+          border-bottom:1px solid red;
+          span {
+            color: #00fffe;
+            font-size: 26px;
+            text-align: center;
+            text-shadow: 0 0 20px #00fffe, 0 0 30px #335696, 0 0 40px #335696,
+              0 0 50px #00fffe, 0 0 60px #00fffe, 0 0 70px #00fffe, 0 0 80px #00fffe;
+          }
+          a {
+          color:#dd4b39;
+          } 
         }      
       }
     }
     .logo {
       float: left;
       height: 60px;
+      margin: 3px;
     }
   }
   .bar-item {

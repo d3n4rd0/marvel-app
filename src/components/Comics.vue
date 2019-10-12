@@ -74,53 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.comics-page {
-  .title {
-    margin: auto;
-    height: 52px;
-    line-height: 52px;
-    color: white;
-  }
-  .comics {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    margin-left: 130px;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 40px 100px 0px 100px;
-    height: 100%;
-  }
-  @media (max-width: 1390px) {
-    .comics {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  @media (max-width: 1090px) {
-    .comics {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: 790px) {
-    .comics {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (max-width: 650px) {
-    .title {
-      margin-top:70px;
-      transition: 0.5s;
-    }
-    .comics {
-      margin-left: 0px;
-    }
-  }
-  @media (max-width: 450px) {
-    .comics {
-      margin-left: 0px;
-    }
-  }
-}
+
 
 </style>
