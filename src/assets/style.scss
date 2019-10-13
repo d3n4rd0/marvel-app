@@ -1,8 +1,8 @@
 .title {
-    height: 52px;
     line-height: 52px;
     color: white;
     transition: 0.5s;
+    margin-left: 250px;
   }
 .comics-page,
 .heroes-page {
@@ -68,7 +68,7 @@
   .grid-container {
     width: 100%;
     padding: 0 30px;
-    padding-left: 150px;
+    padding-left: 250px;
     margin: 0 auto;
     position: absolute;
     top: 0;
@@ -90,14 +90,13 @@
       .featured-item-info {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-left: 150px;
+        margin-left: 250px;
         justify-items: center;
         align-items: center;
-        padding-left: 130px;
         @media (max-width: 1250px) {
             grid-template-columns: 1fr;
             margin-left: 0px;
-            padding: 0px;
+            //padding: 0px;
         }
         .row-item {
           width: auto;
@@ -116,6 +115,9 @@
     .characters {
       grid-template-columns: 1fr 1fr 1fr;
     }
+    .detail-item-bg-wrap {
+      display: none;
+    }
   }
   @media (max-width: 1250px) {
     .comics,
@@ -124,12 +126,25 @@
     }
     .featured-item-info {
         grid-template-columns: 1fr;
+        padding-left: 250px;
     }
   }
   @media (max-width: 940px) {
     .comics,
     .characters {
       grid-template-columns: 1fr;
+      //margin-left: 0px
+    }
+  }
+  @media (max-width: 650px) {
+    .title {
+      margin-left: 0px; 
+    }
+    .featured-item-info {
+        padding-left: 0px;
+    }
+    .comics,
+    .characters {
       margin-left: 0px
     }
   }
@@ -141,7 +156,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
-  margin-left: 130px;
+  margin-left: 250px;
   justify-items: center;
   align-items: center;
   justify-content: space-evenly;

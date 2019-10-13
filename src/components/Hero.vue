@@ -26,14 +26,16 @@
           </div>
         </div>
         <!-- "Appearing in comics:" grid-->
+        <h2 class="title"> Appearing in comics: </h2>
         <div v-if="this.loadingComics">
           <Loader />
         </div>
-        <div v-else class="comics">
+        <div v-else-if="heroComics.length" class="comics">
           <div v-for="comic, index in heroComics" :key="comic.id" class="item">
             <ImageTile :key="index" :data="comic" type="comic" />
           </div>
         </div>
+        <div v-else> No data to show </div>
       </div>
     </div>
   </div>

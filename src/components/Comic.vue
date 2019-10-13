@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="grid-container _forceRgtMar">
-      <h1 class="module-header small">{{comicData.title}}</h1>
+      <h1 class="title">{{comicData.title}}</h1>
       <div class="featured-item-info-wrap">
         <div class="featured-item-info">
           <div class="row-item comic-item">
@@ -26,14 +26,16 @@
           </div>
         </div>
         <!-- "Appearing in comics:" grid-->
+        <h2 class="title"> Characters appearing: </h2>
         <div v-if="this.loadingCharacters">
           <Loader />
         </div>
-        <div v-else class="characters">
+        <div v-else-if="comicCharacters.length > 0" class="characters">
           <div v-for="character, index in comicCharacters" :key="character.id" class="item">
             <ImageTile :key="index" :data="character" type="hero" />
           </div>
         </div>
+        <h3 class="title" v-else> No data to show </h3>
       </div>
     </div>
   </div>
