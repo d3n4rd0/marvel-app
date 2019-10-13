@@ -5,7 +5,7 @@
         <img :src="thumbUrl(heroData, 'portrait_uncanny')" />
       </div>
     </div>
-    <div class="grid-container _forceRgtMar">
+    <div class="grid-container">
       <h1 class="title">{{heroData.name}}</h1>
       <div class="featured-item-info-wrap">
         <div class="featured-item-info">
@@ -19,9 +19,9 @@
           </div>
 
           <div class="featured-item-text">
-            <h1 class="module-header large">{{heroData.name}}</h1>
+            <h1 class="featured-item-title">{{heroData.name}}</h1>
             <div class="featured-item-desc">
-              {{heroData.description ? heroData.description : 'No description for this character'}}
+              {{heroData.description ? heroData.description : '...No description for this character'}}
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
             <ImageTile :key="index" :data="comic" type="comic" />
           </div>
         </div>
-        <div v-else> No data to show </div>
+        <div v-else> Nothing found... </div>
       </div>
     </div>
   </div>

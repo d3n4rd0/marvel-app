@@ -63,7 +63,7 @@ input, button
     border-radius: 20px;
     box-shadow: 0 10px 40px #97e2dd, 0 0 0 7px #00fffeeb;
     transform: scale(0.5);
-    margin-left: 130px;
+    margin-left: 13%;
 }
 
 .search-wrapper

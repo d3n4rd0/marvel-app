@@ -41,6 +41,7 @@ export default {
   width: 300px;
   cursor: pointer;
   opacity: 0.8;
+  margin: auto;
   .comic-title {
     background-color: #ec1d24;
     color: white;
