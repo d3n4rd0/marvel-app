@@ -15,24 +15,24 @@ export default {
     return {}
   },
   methods: {
-    thumbUrl(filename) {
+    thumbUrl (filename) {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
-          "/portrait_uncanny." +
+          '/portrait_uncanny.' +
           filename.thumbnail.extension
         )
       }
     },
-    openItem(comic) {
-        if(this.type === 'comic') {
-            this.$router.push("/comic/" + this.data.id)
-        } else {
-            this.$router.push("/hero/" + this.data.id)
-        }
+    openItem (comic) {
+      if (this.type === 'comic') {
+        this.$router.push('/comic/' + this.data.id)
+      } else {
+        this.$router.push('/hero/' + this.data.id)
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

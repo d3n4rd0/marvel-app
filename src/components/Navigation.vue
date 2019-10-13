@@ -18,7 +18,7 @@
       <ul>
       <li class="bar-item" :class="{ active: (activeRoute == '/heroes' || activeRoute == '/')}" @click="changeRoute('/heroes')">
         <router-link to="/heroes" class="navigation-button">
-          <span>Heroes</span>  
+          <span>Heroes</span>
         </router-link>
       </li>
       <li class="bar-item" :class="{ active: activeRoute == '/comics'}" @click="changeRoute('/comics')">
@@ -35,22 +35,20 @@
 export default {
   name: 'Navigation',
   data () {
-    console.log('aaaaaaaaaa', this.$router)
     return {
       activeRoute: this.$router.history.current.path
-    };
+    }
   },
   methods: {
     changeRoute (route) {
       this.activeRoute = route
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 a {
-  
   &:focus, &:visited {
     color:white;
   }
@@ -81,25 +79,23 @@ a {
       display: block;
       top:40%;
       left:50%;
-      
       li {
         list-style-type: none;
         margin-top: 30px;
         &:hover span{
           color:#fff;
-        } 
+        }
         &:hover a{
           background:#dd4b39;
-        }  
+        }
         &:hover a:before{
           background:#b33a2b;
-        } 
+        }
         &:hover a:after{
           background:#e66a5a;
-        }      
+        }
         a {
           text-decoration: none;
-          //position: absolute;
           display: block;
           width: 100px;
           height: 40px;
@@ -150,13 +146,13 @@ a {
           }
           a {
           background:#dd4b39;
-          }  
+          }
           a:before{
             background:#b33a2b;
-          } 
+          }
           a:after{
             background:#e66a5a;
-          }  
+          }
         }
       }
     }
@@ -166,9 +162,6 @@ a {
   font-size:30px;
   color:#333;
   line-height: 40px;
-  .navigation-button {
-      
-  }
 }
 @media (max-width: 650px) {
   .navigation {
@@ -197,13 +190,13 @@ a {
         }
         a {
           text-decoration: none
-        } 
+        }
         &:hover a{
           color: #00fffe;
-            font-size: 26px;
-            text-align: center;
-            transition: 0.5s;
-        }  
+          font-size: 26px;
+          text-align: center;
+          transition: 0.5s;
+        }
         &.active {
           border-bottom:1px solid red;
           span {
@@ -215,8 +208,8 @@ a {
           }
           a {
           color:#dd4b39;
-          } 
-        }      
+          }
+        }
       }
     }
     .logo {
@@ -232,7 +225,6 @@ a {
       line-height: 55px;
       margin: auto;
       text-align: center;
-
     }
   }
 }

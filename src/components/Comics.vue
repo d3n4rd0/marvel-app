@@ -6,7 +6,11 @@
       <Loader />
     </div>
     <div v-else class="comics">
-      <div v-for="comic, index in comics" :key="comic.id" class="item">
+      <div
+        v-for="(comic, index) in comics"
+        :key="comic.id"
+        class="item"
+      >
         <ImageTile :key="index" :data="comic" type="comic" />
       </div>
     </div>
@@ -17,6 +21,7 @@
 import ImageTile from './ImageTile'
 import Loader from './Loader'
 import SearchInput from './SearchInput'
+import config from '../../config/index'
 export default {
   name: 'Comics',
   components: {
@@ -27,53 +32,52 @@ export default {
   data () {
     return {
       loading: false,
-      comics: [],
-    };
+      comics: []
+    }
   },
   methods: {
     thumbUrl (filename) {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
-          "/portrait_uncanny." +
+          '/portrait_uncanny.' +
           filename.thumbnail.extension
-        );
+        )
       }
     },
-    getComics(searchValue) {
-      this.loading = true;
-      let url = 'http://gateway.marvel.com/v1/public/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
-      if(searchValue) {
-        url += "&titleStartsWith=" + searchValue
+    getComics (searchValue) {
+      this.loading = true
+      let url = 'http://gateway.marvel.com/v1/public/comics?ts=' +
+        config.dev.ts +
+        '&apikey=' +
+        config.dev.apiKey +
+        '&hash=' +
+        config.dev.hash
+      if (searchValue) {
+        url += '&titleStartsWith=' + searchValue
       }
       fetch(url)
         .then(response => {
           response.json().then(res => {
-            console.log(res);
             this.comics = res.data.results
             this.loading = false
-          });
+          })
         })
         .catch(() => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     },
-    openComic(comic) {
-      this.$router.push("/comic/" + comic.id)
+    openComic (comic) {
+      this.$router.push('/comic/' + comic.id)
     },
-    fetchComics(searchValue){
+    fetchComics (searchValue) {
       this.getComics(searchValue)
     }
   },
-  mounted() {
+  mounted () {
     if (!this.comics.length) {
       this.getComics()
     }
   }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

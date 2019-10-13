@@ -40,7 +40,10 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: true,
+    ts: '1234',
+    apiKey: 'cbda9c62ecdcccbe91cfd88996a1dd50',
+    hash: 'b981bf23bad169d54156ec8511f29f73'
   },
 
   build: {

@@ -22,7 +22,7 @@ export default {
   props: ['title'],
   data () {
     return {
-        search: ''
+      search: ''
     }
   },
   methods: {

@@ -1,9 +1,17 @@
+@font-face {
+  font-family: "Marvel";
+  src: local("Marvel"), local("Marvel-Regular"), url("./fonts/Marvel-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
 .title {
-    line-height: 52px;
-    color: white;
-    transition: 0.5s;
-    margin-left: 250px;
-  }
+  line-height: 52px;
+  color: white;
+  transition: 0.5s;
+  margin-left: 250px;
+  font-weight: 400;
+  font-size: 40px;
+}
 .comics-page,
 .heroes-page {
   @media (max-width: 1530px) {
@@ -75,7 +83,7 @@
     right: 0;
     bottom: 0;
     @media (max-width: 651px) {
-            padding: 0px;
+      padding: 0px;
     }
     .featured-item-info-wrap {
       justify-content: initial;
@@ -84,7 +92,7 @@
         width: 100%;
         color: #fff;
         @media (max-width: 1250px) {
-            text-align: center;
+          text-align: center;
         }
       }
       .featured-item-info {
@@ -94,9 +102,9 @@
         justify-items: center;
         align-items: center;
         @media (max-width: 1250px) {
-            grid-template-columns: 1fr;
-            margin-left: 0px;
-            //padding: 0px;
+          grid-template-columns: 1fr;
+          margin-left: 0px;
+          //padding: 0px;
         }
         .row-item {
           width: auto;
@@ -106,10 +114,9 @@
           }
         }
       }
-     
     }
   }
-  
+
   @media (max-width: 1530px) {
     .comics,
     .characters {
@@ -125,8 +132,8 @@
       grid-template-columns: 1fr 1fr;
     }
     .featured-item-info {
-        grid-template-columns: 1fr;
-        padding-left: 250px;
+      grid-template-columns: 1fr;
+      padding-left: 250px;
     }
   }
   @media (max-width: 940px) {
@@ -138,14 +145,14 @@
   }
   @media (max-width: 650px) {
     .title {
-      margin-left: 0px; 
+      margin-left: 0px;
     }
     .featured-item-info {
-        padding-left: 0px;
+      padding-left: 0px;
     }
     .comics,
     .characters {
-      margin-left: 0px
+      margin-left: 0px;
     }
   }
 }
@@ -164,12 +171,12 @@
   height: 100%;
 }
 @media (max-width: 651px) {
-    .title {
-      text-align: center;
-      margin-top: 80px;
-      transition: 0.5s;
-    }
-    .grid-container{
-        padding: 0px;
-    }
+  .title {
+    text-align: center;
+    margin-top: 80px;
+    transition: 0.5s;
+  }
+  .grid-container {
+    padding: 0px;
+  }
 }

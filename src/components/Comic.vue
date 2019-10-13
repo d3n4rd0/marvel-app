@@ -25,13 +25,16 @@
             </div>
           </div>
         </div>
-        <!-- "Appearing in comics:" grid-->
         <h2 class="title"> Characters appearing: </h2>
         <div v-if="this.loadingCharacters">
           <Loader />
         </div>
         <div v-else-if="comicCharacters.length > 0" class="characters">
-          <div v-for="character, index in comicCharacters" :key="character.id" class="item">
+          <div
+            v-for="(character, index) in comicCharacters"
+            :key="character.id"
+            class="item"
+          >
             <ImageTile :key="index" :data="character" type="hero" />
           </div>
         </div>
@@ -44,6 +47,7 @@
 <script>
 import ImageTile from './ImageTile'
 import Loader from './Loader'
+import config from '../../config/index'
 export default {
   name: 'Comic',
   props: ['id'],
@@ -53,14 +57,14 @@ export default {
       loadingCharacters: false,
       comicData: {},
       comicCharacters: []
-    };
+    }
   },
   components: {
     ImageTile,
     Loader
   },
   methods: {
-    thumbUrl(filename, type) {
+    thumbUrl (filename, type) {
       if (filename.thumbnail) {
         return (
           filename.thumbnail.path +
@@ -68,48 +72,58 @@ export default {
           type +
           '.' +
           filename.thumbnail.extension
-        );
+        )
       }
     },
-    getComic() {
-      this.loading = true;
-      let url = 'http://gateway.marvel.com/v1/public/comics/'+this.id+'?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
+    getComic () {
+      this.loading = true
+      let url = 'http://gateway.marvel.com/v1/public/comics/' +
+        this.id +
+        '?ts=' +
+        config.dev.ts +
+        '&apikey=' +
+        config.dev.apiKey +
+        '&hash=' +
+        config.dev.hash
       fetch(url)
         .then(response => {
           response.json().then(res => {
             this.comicData = res.data.results[0]
             this.loading = false
-          });
+          })
         })
         .catch(() => {
           this.loading = false
-        });
+        })
     },
-    getCharacters() {
+    getCharacters () {
       this.loadingCharacters = true
-      let url = 'http://gateway.marvel.com/v1/public/comics/'+this.id+'/characters?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
+      let url = 'http://gateway.marvel.com/v1/public/comics/' +
+        this.id +
+        '/characters?ts=' +
+        config.dev.ts +
+        '&apikey=' +
+        config.dev.apiKey +
+        '&hash=' +
+        config.dev.hash
       fetch(url)
         .then(response => {
           response.json().then(res => {
             this.comicCharacters = res.data.results
             this.loadingCharacters = false
-          });
+          })
         })
         .catch(() => {
           this.loadingCharacters = false
-        });
+        })
     },
-    openComic(comic) {
-      this.$router.push("/comic/" + comic.id)
+    openComic (comic) {
+      this.$router.push('/comic/' + comic.id)
     }
   },
-  mounted() {
-    this.getComic();
-    this.getCharacters();
+  mounted () {
+    this.getComic()
+    this.getCharacters()
   }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

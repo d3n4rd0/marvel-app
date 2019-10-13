@@ -31,7 +31,11 @@
           <Loader />
         </div>
         <div v-else-if="heroComics.length" class="comics">
-          <div v-for="comic, index in heroComics" :key="comic.id" class="item">
+          <div
+            v-for="(comic, index) in heroComics"
+            :key="comic.id"
+            class="item"
+          >
             <ImageTile :key="index" :data="comic" type="comic" />
           </div>
         </div>
@@ -44,6 +48,7 @@
 <script>
 import ImageTile from './ImageTile'
 import Loader from './Loader'
+import config from '../../config/index'
 export default {
   name: 'Hero',
   props: ['id'],
@@ -52,7 +57,7 @@ export default {
       loading: false,
       loadingComics: false,
       heroData: {},
-      heroComics:[]
+      heroComics: []
     }
   },
   components: {
@@ -71,23 +76,30 @@ export default {
         )
       }
     },
-    getHero() {
+    getHero () {
       this.loading = true
-      let url = 'http://gateway.marvel.com/v1/public/characters/'+this.id+'?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
+      let url = 'http://gateway.marvel.com/v1/public/characters/' + this.id + '?ts=' + config.dev.ts + '&apikey=' + config.dev.apiKey + '&hash=' + config.dev.hash
       fetch(url)
         .then(response => {
           response.json().then(res => {
             this.heroData = res.data.results[0]
             this.loading = false
-          });
+          })
         })
         .catch(() => {
           this.loading = false
-        });
+        })
     },
-    getComics() {
+    getComics () {
       this.loadingComics = true
-      let url = 'http://gateway.marvel.com/v1/public/characters/'+this.id+'/comics?ts=1234&apikey=cbda9c62ecdcccbe91cfd88996a1dd50&hash=b981bf23bad169d54156ec8511f29f73'
+      let url = 'http://gateway.marvel.com/v1/public/characters/' +
+        this.id +
+        '/comics?ts=' +
+        config.dev.ts +
+        '&apikey=' +
+        config.dev.apiKey +
+        '&hash=' +
+        config.dev.hash
       fetch(url)
         .then(response => {
           response.json().then(res => {
@@ -97,16 +109,12 @@ export default {
         })
         .catch(() => {
           this.loadingComics = false
-        });
-    },
+        })
+    }
   },
-  mounted() {
+  mounted () {
     this.getHero()
     this.getComics()
   }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

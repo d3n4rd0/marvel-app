@@ -11,6 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
+      alias: '/heroes',
       name: 'Heroes',
       component: Heroes
     },
@@ -19,11 +20,6 @@ export default new Router({
       name: 'Hero',
       props: true,
       component: Hero
-    },
-    {
-      path: '/heroes',
-      name: 'Heroes',
-      component: Heroes
     },
     {
       path: '/comic/:id',
